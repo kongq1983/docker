@@ -1,0 +1,23 @@
+
+spring:
+  application:
+      name: product-service
+  profiles:
+    active: dev
+#  activemq:
+#    broker-url: tcp://mq.server1.com:61616
+    #user: admin
+    #password: secret
+
+
+
+server:
+  port: 10000
+  servlet:
+    context-path: /product-service
+  # address 注意 如果localhost 则外部无法访问
+#  address: localhost
+#  address: 192.168.6.170
+#    context-path: /producer
+
+
