@@ -22,3 +22,10 @@ cd $basePath/product-client
 # 构建product-client
 docker build -f Dockerfile -t dockerRegisterServer:5000/product-client:1.0.0 .
 
+# 进入build目录
+cd $basePath/build
+# 先关闭所有服务
+docker-compose down
+# 启动服务
+docker-compose up
+
