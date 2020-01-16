@@ -27,5 +27,5 @@ cd $basePath/build
 # 先关闭所有服务
 docker-compose down
 # 启动服务
-docker-compose up
+docker-compose up &
 
