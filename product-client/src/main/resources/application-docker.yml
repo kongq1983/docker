@@ -1,0 +1,9 @@
+
+zookeeper:
+  server:
+    url: zookeeper_server:2181
+
+
+
+
+
