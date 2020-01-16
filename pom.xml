@@ -9,10 +9,9 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
+        <module>common</module>
         <module>product-service</module>
         <module>product-client</module>
-        <module>common</module>
-        <module>component</module>
     </modules>
 
     <parent>
