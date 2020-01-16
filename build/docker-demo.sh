@@ -15,10 +15,10 @@ basePath=$(dirname "$PWD")
 # 进入product-service目录
 cd $basePath/product-service
 # 构建product-service
-docker build -f Dockerfile .
+docker build -f Dockerfile -t dockerRegisterServer:5000/product-service:1.0.0 .
 
 # 进入product-client目录
 cd $basePath/product-client
 # 构建product-client
-docker build -f Dockerfile .
+docker build -f Dockerfile -t dockerRegisterServer:5000/product-client:1.0.0 .
 
