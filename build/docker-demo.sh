@@ -8,5 +8,17 @@ mvn package -f ../common/pom.xml
 mvn package -f ../pom.xml
 
 
-docker build -f ProductServiceDockerfile .
-docker build -f ProductClientDockerfile .
+# 上一级目录
+basePath=$(dirname "$PWD")
+#docker build -f ProductServiceDockerfile .
+
+# 进入product-service目录
+cd $basePath/product-service
+# 构建product-service
+docker build -f Dockerfile .
+
+# 进入product-client目录
+cd $basePath/product-client
+# 构建product-client
+docker build -f Dockerfile .
+

@@ -1,5 +1,0 @@
-FROM java:8
-MAINTAINER kong
-ADD ../product-service/target/product-client-1.0-SNAPSHOT.jar app.jar
-EXPOSE 10001
-ENTRYPOINT ["java","-jar","app.jar"]
