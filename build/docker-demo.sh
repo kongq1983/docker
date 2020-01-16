@@ -1,4 +1,6 @@
 
+# 先清空
+mvn clean
 # 先执行common打包
 mvn package  -f ../common/pom.xml
 

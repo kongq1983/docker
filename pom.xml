@@ -84,6 +84,12 @@
                 <version>${httpclient.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>com.kq</groupId>
+                <artifactId>docker-common</artifactId>
+                <version>${mycommon.version}</version>
+            </dependency>
+
         </dependencies>
 
     </dependencyManagement>
@@ -169,14 +175,6 @@
 
     <build>
         <plugins>
-
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <fork>true</fork>
-                </configuration>
-            </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
