@@ -1,0 +1,45 @@
+
+version: '3'
+services:
+  zookeeper:
+    image: zookeeper:3.4
+    ports:
+      - "2181:2181"
+#    volumes:
+#      - /mysql/13306/data:/var/lib/mysql
+#      - /mysql/13306/conf/my.cnf:/etc/my.cnf
+
+  product-service:
+    image: "dockerRegisterServer:5000/product-service:1.0.0"
+    privileged: true
+    ports:
+      - "10000:10000"
+    restart: always
+    environment:
+      - "SPRING_PROFILES_ACTIVE=docker"
+    depends_on:
+      - zookeeper
+    links:
+      - zookeeper:zookeeper_server
+#    volumes:
+#      - /mysql/23306/data:/var/lib/mysql
+#      - /mysql/23306/conf/my.cnf:/etc/my.cnf
+
+
+  product-client:
+    image: "dockerRegisterServer:5000/product-client:1.0.0"
+    privileged: true
+    ports:
+      - "10001:10001"
+    restart: always
+    environment:
+      - "SPRING_PROFILES_ACTIVE=docker"
+    depends_on:
+      - zookeeper
+    links:
+      - zookeeper:zookeeper_server
+#    volumes:
+#      - /mysql/33306/data:/var/lib/mysql
+#      - /mysql/33306/conf/my.cnf:/etc/my.cnf
+
+
