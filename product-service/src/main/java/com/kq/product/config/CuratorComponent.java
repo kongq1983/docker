@@ -6,12 +6,13 @@ import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.retry.ExponentialBackoffRetry;
 import org.apache.zookeeper.CreateMode;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.util.List;
 
-@Configuration
-public class ZookeeperConfiuration {
+@Component
+public class CuratorComponent {
 
     @Value("${zookeeper.server.url}")
     private String zookeeperServer;
@@ -20,13 +21,15 @@ public class ZookeeperConfiuration {
 
     private CuratorFramework client = null;
 
-    public ZookeeperConfiuration(){
-        client = CuratorFrameworkFactory.newClient(zookeeperServer, retryPolicy);
-        client.start();
+    public CuratorComponent(){
+
     }
 
     @PostConstruct
     public void init(){
+
+        client = CuratorFrameworkFactory.newClient(zookeeperServer, retryPolicy);
+        client.start();
 
         if(client==null){
             throw new RuntimeException("CuratorFramework client 初始化失败！");
@@ -42,6 +45,19 @@ public class ZookeeperConfiuration {
         }else {
             client.create().creatingParentsIfNeeded().forPath(path, data.getBytes());
         }
+
+    }
+
+
+    /**
+     * 获取子路径
+     * @param path
+     * @return
+     * @throws Exception
+     */
+    public List<String> getChildPaths(String path) throws Exception{
+
+        return client.getChildren().watched().forPath(path);
 
     }
 
