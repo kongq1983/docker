@@ -1,0 +1,12 @@
+
+#zookeeper:
+#  server:
+#    url: zookeeper_server:2181
+
+reg-center:
+  # 连接Zookeeper服务器的列表IP:端口号,多个地址用逗号分隔
+  server-list: "zookeeper_server:2181"
+
+
+
+

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>docker</artifactId>
+        <groupId>com.kq</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>elastic-job</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>elastic-job-simple</module>
+    </modules>
+
+    <properties>
+        <curator.version>2.10.0</curator.version>
+        <guava.version>18.0</guava.version>
+    </properties>
+
+
+    <dependencyManagement>
+
+        <dependencies>
+            <!-- 当当的elastic-job-lite相关 -->
+            <dependency>
+                <artifactId>elastic-job-common-core</artifactId>
+                <groupId>com.dangdang</groupId>
+                <version>2.1.5</version>
+
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.apache.curator</groupId>
+                        <artifactId>curator-framework</artifactId>
+                    </exclusion>
+
+                </exclusions>
+
+            </dependency>
+            <dependency>
+                <artifactId>elastic-job-lite-core</artifactId>
+                <groupId>com.dangdang</groupId>
+                <version>2.1.5</version>
+            </dependency>
+            <dependency>
+                <artifactId>elastic-job-lite-spring</artifactId>
+                <groupId>com.dangdang</groupId>
+                <version>2.1.5</version>
+            </dependency>
+        </dependencies>
+
+    </dependencyManagement>
+
+
+    <build>
+        <plugins>
+
+             <plugin>
+                 <groupId>org.springframework.boot</groupId>
+                 <artifactId>spring-boot-maven-plugin</artifactId>
+                 <configuration>
+                     <fork>true</fork>
+                 </configuration>
+             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>
